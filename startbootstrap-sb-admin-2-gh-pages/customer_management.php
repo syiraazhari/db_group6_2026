@@ -1,3 +1,8 @@
+<?php
+include("includes/auth.php");
+include("includes/db.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">Reservation Management
 
@@ -373,6 +378,9 @@
                             <h6 class="m-0 font-weight-bold text-primary">Customer Records</h6>
                         </div>
                         <div class="card-body">
+			<a href="customer_add.php" class="btn btn-success mb-3">
+    				Add Customer
+				</a>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -398,31 +406,41 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Ali Ahmad</td>
-                                            <td>0123456789</td>
-                                            <td>ali@gmail.com</td>
-                                            <td>ali01</td>
-                                            <td>Active</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Siti Aminah</td>
-                                            <td>0134567890</td>
-                                            <td>siti@gmail.com</td>
-                                            <td>siti01</td>
-                                            <td>Active</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>John Lee</td>
-                                            <td>0145678901</td>
-                                            <td>john@gmail.com</td>
-                                            <td>john01</td>
-                                            <td>Active</td>
-                                        </tr>
-                                                                      </tbody>
+<?php
+
+$sql = "SELECT * FROM customer";
+$result = mysqli_query($conn, $sql);
+
+while($row = mysqli_fetch_assoc($result))
+{
+?>
+
+<tr>
+    <td><?php echo $row['customer_id']; ?></td>
+    <td><?php echo $row['customer_name']; ?></td>
+    <td><?php echo $row['phone_no']; ?></td>
+    <td><?php echo $row['email']; ?></td>
+    <td><?php echo $row['username']; ?></td>
+    <td><?php echo $row['account_status']; ?></td>
+
+    <td>
+    <a href="customer_edit.php?id=<?php echo $row['customer_id']; ?>"
+       class="btn btn-warning btn-sm">
+       Edit
+    </a>
+
+    <a href="customer_delete.php?id=<?php echo $row['customer_id']; ?>"
+       class="btn btn-danger btn-sm"
+       onclick="return confirm('Delete this customer?')">
+       Delete
+    </a>
+</td>
+</tr>
+
+<?php
+}
+?>
+                                   </tbody>
                                 </table>
                             </div>
                         </div>
@@ -469,7 +487,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="logout.php">Logout</a>
                 </div>
             </div>
         </div>

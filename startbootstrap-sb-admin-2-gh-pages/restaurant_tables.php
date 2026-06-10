@@ -1,5 +1,10 @@
+<?php
+include("includes/auth.php");
+include("includes/db.php");
+?>
+
 <!DOCTYPE html>
-<html lang="en">Reservation Management
+<html lang="en">Reservation Table Management
 
 <head>
 
@@ -365,64 +370,65 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Customer Management</h1>
-                    <p class="mb-4">Add, update, delete and manage customer information.</p>
+                    <p class="mb-4">Manage customer reservations and booking records.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Customer Records</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Reservation Records</h6>
                         </div>
                         <div class="card-body">
+			     <a href="restaurant_table_add.php" class="btn btn-success mb-3">
+    Add Table
+</a>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Customer ID</th>
-					    <th>Customer Name</th>
-				            <th>Phone Number</th>
-					    <th>Email</th>
-					    <th>Username </th>
-					    <th>Account Status</th>
+                                            <th>Table ID</th>
+					    <th>Table Number</th>
+				            <th>Capacity</th>
+					    <th>Table Status</th>
+					    <th>Location </th>
 					    <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Customer ID</th>
-					    <th>Customer Name</th>
-				            <th>Phone Number</th>
-					    <th>Email</th>
-					    <th>Username </th>
-					    <th>Account Status</th>					
-					    <th>Action</th>
+                                            <th>Table ID</th>
+					    <th>Table Number</th>
+				            <th>Capacity</th>
+					    <th>Table Status</th>
+					    <th>Location </th>
+                 			    <th>Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Ali Ahmad</td>
-                                            <td>0123456789</td>
-                                            <td>ali@gmail.com</td>
-                                            <td>ali01</td>
-                                            <td>Active</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Siti Aminah</td>
-                                            <td>0134567890</td>
-                                            <td>siti@gmail.com</td>
-                                            <td>siti01</td>
-                                            <td>Active</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>John Lee</td>
-                                            <td>0145678901</td>
-                                            <td>john@gmail.com</td>
-                                            <td>john01</td>
-                                            <td>Active</td>
-                                        </tr>
-                                                                      </tbody>
+                                        <?php
+$sql = "SELECT * FROM restaurant_table";
+$result = mysqli_query($conn, $sql);
+
+while($row = mysqli_fetch_assoc($result))
+{
+?>
+<tr>
+    <td><?php echo $row['table_id']; ?></td>
+    <td><?php echo $row['table_number']; ?></td>
+    <td><?php echo $row['capacity']; ?></td>
+    <td><?php echo $row['table_status']; ?></td>
+    <td><?php echo $row['location']; ?></td>
+    <td>
+        <a href="restaurant_table_edit.php?id=<?php echo $row['table_id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+
+        <a href="restaurant_table_delete.php?id=<?php echo $row['table_id']; ?>" 
+           class="btn btn-danger btn-sm"
+           onclick="return confirm('Delete this table?')">Delete</a>
+    </td>
+</tr>
+<?php
+}
+?>  
+                          </tbody>
                                 </table>
                             </div>
                         </div>

@@ -1,3 +1,27 @@
+<?php
+include("includes/auth.php");
+include("includes/db.php");
+
+if (isset($_POST['save'])) {
+    $customer_name = $_POST['customer_name'];
+    $phone_no = $_POST['phone_no'];
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $account_status = $_POST['account_status'];
+
+    $sql = "INSERT INTO customer 
+            (customer_name, phone_no, email, username, password, account_status)
+            VALUES 
+            ('$customer_name', '$phone_no', '$email', '$username', '$password', '$account_status')";
+
+    mysqli_query($conn, $sql);
+
+    header("Location: customer_management.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">Reservation Management
 
@@ -364,70 +388,57 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Customer Management</h1>
-                    <p class="mb-4">Add, update, delete and manage customer information.</p>
+                    <h1 class="h3 mb-2 text-gray-800">Add Customer</h1>
+<p class="mb-4">Enter new customer information.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Customer Records</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Customer ID</th>
-					    <th>Customer Name</th>
-				            <th>Phone Number</th>
-					    <th>Email</th>
-					    <th>Username </th>
-					    <th>Account Status</th>
-					    <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Customer ID</th>
-					    <th>Customer Name</th>
-				            <th>Phone Number</th>
-					    <th>Email</th>
-					    <th>Username </th>
-					    <th>Account Status</th>					
-					    <th>Action</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Ali Ahmad</td>
-                                            <td>0123456789</td>
-                                            <td>ali@gmail.com</td>
-                                            <td>ali01</td>
-                                            <td>Active</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Siti Aminah</td>
-                                            <td>0134567890</td>
-                                            <td>siti@gmail.com</td>
-                                            <td>siti01</td>
-                                            <td>Active</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>John Lee</td>
-                                            <td>0145678901</td>
-                                            <td>john@gmail.com</td>
-                                            <td>john01</td>
-                                            <td>Active</td>
-                                        </tr>
-                                                                      </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Customer Form</h6>
+    </div>
 
+    <div class="card-body">
+        <form method="POST" action="">
+
+            <div class="form-group">
+                <label>Customer Name</label>
+                <input type="text" name="customer_name" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="text" name="phone_no" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" name="username" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="text" name="password" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label>Account Status</label>
+                <select name="account_status" class="form-control" required>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+            </div>
+
+            <button type="submit" name="save" class="btn btn-success">Save Customer</button>
+            <a href="customer_management.php" class="btn btn-secondary">Back</a>
+
+        </form>
+    </div>
+</div>
                 </div>
                 <!-- /.container-fluid -->
 
