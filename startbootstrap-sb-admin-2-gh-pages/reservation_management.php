@@ -438,10 +438,10 @@ while($row = mysqli_fetch_assoc($result))
     </a>
 
     <a href="reservation_delete.php?id=<?php echo $row['reservation_id']; ?>"
-       class="btn btn-danger btn-sm"
-       onclick="return confirm('Delete this reservation?')">
-       Delete
-    </a>
+   class="btn btn-danger btn-sm"
+   onclick="return confirm('Delete this reservation?')">
+   Delete
+</a>
 </td>
 
 </tr>

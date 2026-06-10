@@ -4,7 +4,7 @@ include("includes/db.php");
 ?>
 
 <!DOCTYPE html>
-<html lang="en">Reservation Table Management
+<html lang="en">Payment Management
 
 <head>
 
@@ -369,66 +369,59 @@ include("includes/db.php");
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Restaurant Table Management</h1>
-<p class="mb-4">Add, update, delete and manage restaurant table information.</p>
+                    <h1 class="h3 mb-2 text-gray-800">Payment Report</h1>
+<p class="mb-4">View all payment records.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Restaurant Table Records</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Payment Report</h6>
                         </div>
                         <div class="card-body">
-			     <a href="restaurant_table_add.php" class="btn btn-success mb-3">
-    Add Table
-</a>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Table ID</th>
-					    <th>Table Number</th>
-				            <th>Capacity</th>
-					    <th>Table Status</th>
-					    <th>Location </th>
-					    <th>Action</th>
+                                            <th>Payment ID</th>
+					    <th>Reservation ID</th>
+				            <th>Payment Amount</th>
+					    <th>Payment Method</th>
+					    <th>Payment Status</th>
+					    <th>Payment Date</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Table ID</th>
-					    <th>Table Number</th>
-				            <th>Capacity</th>
-					    <th>Table Status</th>
-					    <th>Location </th>
-                 			    <th>Action</th>
+                                            <th>Payment ID</th>
+					    <th>Reservation ID</th>
+				            <th>Payment Amount</th>
+					    <th>Payment Method</th>
+					    <th>Payment Status</th>
+					    <th>Payment Date</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <?php
-$sql = "SELECT * FROM restaurant_table";
+<?php
+$sql = "SELECT * FROM payment";
 $result = mysqli_query($conn, $sql);
 
 while($row = mysqli_fetch_assoc($result))
 {
 ?>
 <tr>
-    <td><?php echo $row['table_id']; ?></td>
-    <td><?php echo $row['table_number']; ?></td>
-    <td><?php echo $row['capacity']; ?></td>
-    <td><?php echo $row['table_status']; ?></td>
-    <td><?php echo $row['location']; ?></td>
-    <td>
-        <a href="restaurant_table_edit.php?id=<?php echo $row['table_id']; ?>" class="btn btn-warning btn-sm">Edit</a>
 
-        <a href="restaurant_table_delete.php?id=<?php echo $row['table_id']; ?>" 
-           class="btn btn-danger btn-sm"
-           onclick="return confirm('Delete this table?')">Delete</a>
-    </td>
+<td><?php echo $row['payment_id']; ?></td>
+<td><?php echo $row['reservation_id']; ?></td>
+<td>RM <?php echo $row['payment_amount']; ?></td>
+<td><?php echo $row['payment_method']; ?></td>
+<td><?php echo $row['payment_status']; ?></td>
+<td><?php echo $row['payment_date']; ?></td>
+
 </tr>
 <?php
 }
-?>  
-                          </tbody>
+?>
+</tbody>
                                 </table>
                             </div>
                         </div>

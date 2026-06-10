@@ -369,19 +369,16 @@ include("includes/db.php");
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Restaurant Table Management</h1>
-<p class="mb-4">Add, update, delete and manage restaurant table information.</p>
+                    <h1 class="h3 mb-2 text-gray-800">Table Availability Report</h1>
+<p class="mb-4">View restaurant table availability status.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Restaurant Table Records</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Table Availability Report</h6>
                         </div>
                         <div class="card-body">
-			     <a href="restaurant_table_add.php" class="btn btn-success mb-3">
-    Add Table
-</a>
-                            <div class="table-responsive">
+		             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -390,7 +387,6 @@ include("includes/db.php");
 				            <th>Capacity</th>
 					    <th>Table Status</th>
 					    <th>Location </th>
-					    <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -399,9 +395,7 @@ include("includes/db.php");
 					    <th>Table Number</th>
 				            <th>Capacity</th>
 					    <th>Table Status</th>
-					    <th>Location </th>
-                 			    <th>Action</th>
-                                        </tr>
+					    <th>Location </th>                                        					</tr>
                                     </tfoot>
                                     <tbody>
                                         <?php
@@ -417,13 +411,6 @@ while($row = mysqli_fetch_assoc($result))
     <td><?php echo $row['capacity']; ?></td>
     <td><?php echo $row['table_status']; ?></td>
     <td><?php echo $row['location']; ?></td>
-    <td>
-        <a href="restaurant_table_edit.php?id=<?php echo $row['table_id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-
-        <a href="restaurant_table_delete.php?id=<?php echo $row['table_id']; ?>" 
-           class="btn btn-danger btn-sm"
-           onclick="return confirm('Delete this table?')">Delete</a>
-    </td>
 </tr>
 <?php
 }
