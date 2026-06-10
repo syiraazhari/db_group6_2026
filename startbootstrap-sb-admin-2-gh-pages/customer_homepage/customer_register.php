@@ -1,0 +1,132 @@
+<?php
+include("../../includes/db.php");
+
+if (isset($_POST['register'])) {
+    $customer_name = $_POST['customer_name'];
+    $phone_no = $_POST['phone_no'];
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $account_status = "Active";
+
+    $sql = "INSERT INTO customer
+            (customer_name, phone_no, email, username, password, account_status)
+            VALUES
+            ('$customer_name', '$phone_no', '$email', '$username', '$password', '$account_status')";
+
+    mysqli_query($conn, $sql);
+
+    header("Location: customer_login.php");
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book a table at Spice Haven — Reserve your dining experience today.">
+  <title>Customer Register</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 97'%3E%3Cpath fill='%23999c68' d='M92 75c0-12.15 9.85-22 22-22h22v22c0 12.15-9.85 22-22 22H92V75Z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="topnav" id="myTopnav">
+    <div class="nav-top-row">
+      <div class="logo">SPICE HAVEN</div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">&#9776;</button>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">HOME</a>
+      <a href="menu.html">MENU</a>
+      <a href="about.html">ABOUT</a>
+      <a href="about.html#contact">CONTACT</a>
+      <a href="book-a-table.html" class="active">BOOK A TABLE</a>
+    </div>
+  </nav>
+
+  <div class="booking-header" id="heroSection">
+    <h1>CUSTOMER REGISTER</h1>
+  </div>
+
+  <form method="POST" action="">
+  <div class="booking-controls">
+
+    <div class="booking-field">
+      <label>Customer Name</label>
+      <input type="text" name="customer_name" required>
+    </div>
+
+    <div class="booking-field">
+      <label>Phone Number</label>
+      <input type="text" name="phone_no" required>
+    </div>
+
+    <div class="booking-field">
+      <label>Email</label>
+      <input type="email" name="email">
+    </div>
+
+    <div class="booking-field">
+      <label>Username</label>
+      <input type="text" name="username" required>
+    </div>
+
+    <div class="booking-field">
+      <label>Password</label>
+      <input type="password" name="password" required>
+    </div>
+
+  </div>
+
+  <button type="submit" name="register" class="book-btn">REGISTER</button>
+</form>
+
+<p style="text-align:center; margin-bottom:40px;">
+  Already have an account?
+  <a href="customer_login.php">Login here</a>
+</p>
+
+  <a href="customer_register.php" class="active">REGISTER</a>
+
+  <footer class="footer">
+    <div class="footer-logo">
+      <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 180 97" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill="#000" d="M92 75c0-12.15 9.85-22 22-22h22v22c0 12.15-9.85 22-22 22H92V75Z"/>
+        <path fill="#000" d="M136 31c0-12.15 9.85-22 22-22h22v22c0 12.15-9.85 22-22 22h-22V31Z"/>
+        <path fill="#000" d="M88 75c0-12.15-9.85-22-22-22H44v22c0 12.15 9.85 22 22 22h22V75Z"/>
+        <path fill="#000" d="M44 31c0-12.15-9.85-22-22-22H0v22c0 12.15 9.85 22 22 22h22V31Z"/>
+        <path fill="#000" d="M74.556 46.67c-8.591-8.592-8.591-22.522 0-31.113L90.113 0l15.556 15.556c8.592 8.591 8.592 22.521 0 31.113L90.113 62.226 74.556 46.67Z"/>
+      </svg>
+    </div>
+    <div class="footer-box">
+      <div class="footer-box1">
+        <p>INDIAN RESTAURANT<br>&amp; CAFFE</p>
+        <b>SPICE HAVEN</b>
+      </div>
+      <div class="footer-box2">
+        A: 500 Terry Francine St.<br>
+        San Francisco CA 94158<br>
+        T: 123-456-7890<br>
+        E: hello@spicehaven.com<br><br>
+        Mon–Sun: 12:00 PM – 10:30 PM
+      </div>
+      <div class="footer-box3">
+        <a href="index.html">HOME</a>
+        <a href="menu.html">MENU</a>
+        <a href="about.html">ABOUT</a>
+        <a href="about.html#contact">CONTACT</a>
+        <a href="book-a-table.html">BOOK A TABLE</a>
+        <a href=#! target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+        <a href=#! target="_blank" rel="noopener noreferrer">FACEBOOK</a>
+      </div>
+    </div>
+    <p>&copy; 2025 by Spice Haven. All rights reserved. <br> Developed by <a style="font-weight: bold;" href="https://github.com/Rabina-Vishwakarma/" target="_blank">Rabina Vishwakarma</a> • Distributed by <a style="font-weight: bold;" href="https://themewagon.com" target="_blank">ThemeWagon</a></p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/booktable.js"></script>
+</body>
+</html>
