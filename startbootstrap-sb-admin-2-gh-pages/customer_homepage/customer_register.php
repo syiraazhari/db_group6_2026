@@ -1,5 +1,5 @@
 <?php
-include("../../includes/db.php");
+include("../includes/db.php");
 
 if (isset($_POST['register'])) {
     $customer_name = $_POST['customer_name'];
@@ -16,7 +16,7 @@ if (isset($_POST['register'])) {
 
     mysqli_query($conn, $sql);
 
-    header("Location: customer_login.php");
+    header("Location: ../login.php");
     exit();
 }
 ?>
@@ -43,7 +43,7 @@ if (isset($_POST['register'])) {
       <a href="menu.html">MENU</a>
       <a href="about.html">ABOUT</a>
       <a href="about.html#contact">CONTACT</a>
-      <a href="book-a-table.html" class="active">BOOK A TABLE</a>
+      <a href="book-a-table.php" class="active">BOOK A TABLE</a>
     </div>
   </nav>
 
@@ -118,7 +118,7 @@ if (isset($_POST['register'])) {
         <a href="menu.html">MENU</a>
         <a href="about.html">ABOUT</a>
         <a href="about.html#contact">CONTACT</a>
-        <a href="book-a-table.html">BOOK A TABLE</a>
+        <a href="book-a-table.php">BOOK A TABLE</a>
         <a href=#! target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
         <a href=#! target="_blank" rel="noopener noreferrer">FACEBOOK</a>
       </div>

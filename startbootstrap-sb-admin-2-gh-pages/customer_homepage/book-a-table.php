@@ -12,7 +12,7 @@ $time_slots = [
 ];
 
 if (isset($_POST['book'])) {
-    $customer_id = 1;
+    $customer_id = $_POST['customer_id'];
     $party_size = $_POST['party_size'];
     $reservation_date = $_POST['reservation_date'];
     $reservation_time = $_POST['reservation_time'];
@@ -40,7 +40,20 @@ if (isset($_POST['book'])) {
                    VALUES
                    ('$customer_id', '$table_id', '$staff_id', '$reservation_date', '$reservation_time', '$party_size', 'Confirmed', '$booking_date')";
 
-        mysqli_query($conn, $insert);
+        if (mysqli_query($conn, $insert)) {
+
+    $updateTable = "UPDATE restaurant_table
+                    SET table_status = 'Reserved'
+                    WHERE table_id = '$table_id'";
+
+    mysqli_query($conn, $updateTable);
+
+    $message = "Reservation successful. Your table has been booked.";
+
+} else {
+    $message = "Reservation failed.";
+}
+
 
         $message = "Reservation successful. Your table has been booked.";
     } else {
@@ -82,6 +95,10 @@ if (isset($_POST['book'])) {
 
   <div class="booking-controls">
     <div class="booking-field">
+	<div class="booking-field">
+  <label>Customer ID</label>
+  <input type="number" name="customer_id" required>
+</div>
       <label>Party Size</label>
       <select name="party_size" required>
         <option value="1">1 Guest</option>

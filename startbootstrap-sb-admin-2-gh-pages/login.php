@@ -8,6 +8,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
+    // ADMIN LOGIN
     $sql = "SELECT * FROM admin WHERE username='$username' AND password='$password'";
     $result = mysqli_query($conn, $sql);
 
@@ -17,9 +18,33 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
         header("Location: dashboard.php");
         exit();
-    } else {
-        $error = "Invalid username or password";
     }
+
+    // STAFF LOGIN
+    $sql = "SELECT * FROM staff WHERE username='$username' AND password='$password'";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) == 1) {
+        $_SESSION['username'] = $username;
+        $_SESSION['role'] = "staff";
+
+        header("Location: dashboard.php");
+        exit();
+    }
+
+    // CUSTOMER LOGIN
+    $sql = "SELECT * FROM customer WHERE username='$username' AND password='$password'";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) == 1) {
+        $_SESSION['username'] = $username;
+        $_SESSION['role'] = "customer";
+
+        header("Location: customer_homepage/book-a-table.php");
+        exit();
+    }
+
+    $error = "Invalid username or password";
 }
 ?>
 <!DOCTYPE html>
@@ -86,13 +111,14 @@ placeholder="Password">
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
     Login
 </button>
+<p style="color:red; text-align:center;"><?php echo $error; ?></p>
                                     </form>
                                     <hr>
                                     <div class="text-center">
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
+                                        <a class="small" href="customer_homepage/customer_register.php">Create an Account!</a>
                                     </div>
                                 </div>
                             </div>
