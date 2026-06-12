@@ -5,7 +5,7 @@
         <div class="sidebar-brand-icon">
             <i class="fas fa-utensils"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">RBRS</div>
+        <div class="sidebar-brand-text mx-3">RBS</div>
     </a>
 
     <hr class="sidebar-divider my-0">

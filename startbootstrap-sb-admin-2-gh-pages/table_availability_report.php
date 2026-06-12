@@ -254,7 +254,9 @@ include("includes/db.php");
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Table Availability Report</h1>
+                    <h1 style="color:white;font-weight:bold;text-shadow:2px 2px 6px rgba(0,0,0,0.8);">
+    Table Availability Report
+</h1>
 <p class="mb-4">View restaurant table availability status.</p>
 
                     <!-- DataTales Example -->
