@@ -88,9 +88,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 }
 
     .login-card {
-    width: 900px;
-    height: 620px;
-    border-radius: 25px;
+    width: 620px;
+    height: 720px;
+    border-radius: 15px;
     background: rgba(255,255,255,0.96);
     box-shadow: 0 0 30px rgba(0,0,0,0.45);
 }
@@ -105,14 +105,14 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             border-color: #a77f2b;
         }
 .btn-user {
-    height: 65px !important;
-    font-size: 20px !important;
+    height: 55px !important;
+    font-size: 18px !important;
     font-weight: 600;
 }
         .form-control-user {
     border: 1px solid #d4af37;
-    height: 65px !important;
-    font-size: 18px;
+    height: 55px !important;
+    font-size: 16px;
 }
 
         .gold-text {
@@ -140,28 +140,67 @@ form.user {
 } </style>
 
     <div class="card border-0 shadow-lg login-card">
-            <div class="card-body p-5 d-flex flex-column justify-content-center" style="height:620px;">
+            <div class="card-body p-5 d-flex flex-column justify-content-center" style="height:720px;">
 
-                <div class="text-center mb-4">
-                    <h2 class="text-gray-900 mb-0" style="font-size:60px;font-weight:700;letter-spacing:2px;">RESTAURANT</h2>
-                    <div class="gold-text">🍽 BOOKING SYSTEM</div>
-                </div>
+              <div class="text-center mb-4">
+    <img src="img/logo-top.png"
+         alt="Restaurant Logo"
+         style="width:180px; margin-bottom:10px;">
+
+    <h2 class="text-gray-900 mb-1"
+        style="font-size:42px;font-family:Georgia,serif;letter-spacing:5px;">
+        RESTAURANT
+    </h2>
+
+    <div class="gold-text">
+        BOOKING SYSTEM
+    </div>
+</div>
 
                 <div class="text-center">
-                    <h1 class="text-gray-900 mb-5" style="font-size:38px;">Welcome Back!</h1>
+                    <h1 class="text-gray-900 mb-5" style="font-size:32px;">
+    Welcome Back!
+</h1>
                 </div>
 
                 <form class="user" method="POST" action="">
-                    <div class="form-group">
-                        <input type="text" class="form-control form-control-user"
-                               name="username" placeholder="Enter Username">
-                    </div>
+                   <div class="form-group position-relative">
 
-                    <div class="form-group">
-                        <input type="password" class="form-control form-control-user"
-                               name="password" placeholder="Password">
-                    </div>
+    <i class="fas fa-user"
+       style="
+       position:absolute;
+       left:20px;
+       top:20px;
+       color:#c89b3c;
+       z-index:10;">
+    </i>
 
+    <input type="text"
+           class="form-control form-control-user"
+           name="username"
+           placeholder="Enter Username"
+           style="padding-left:55px;">
+
+</div>
+
+                    <div class="form-group position-relative">
+
+    <i class="fas fa-lock"
+       style="
+       position:absolute;
+       left:20px;
+       top:20px;
+       color:#c89b3c;
+       z-index:10;">
+    </i>
+
+    <input type="password"
+           class="form-control form-control-user"
+           name="password"
+           placeholder="Password"
+           style="padding-left:55px;">
+
+</div>
                     <div class="form-group">
                         <div class="custom-control custom-checkbox small">
                             <input type="checkbox" class="custom-control-input" id="customCheck">
