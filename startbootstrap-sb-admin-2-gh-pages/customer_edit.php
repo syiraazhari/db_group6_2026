@@ -37,6 +37,28 @@ if (isset($_POST['update'])) {
     <title>Edit Customer</title>
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+<style>
+body {
+    background: linear-gradient(rgba(0,0,0,0.55),
+                                rgba(0,0,0,0.55)),
+                url('img/restaurant-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+h1 {
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+}
+
+label {
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+}
+</style>
 </head>
 
 <body class="p-5">

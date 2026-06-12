@@ -26,6 +26,33 @@ if (isset($_POST['save'])) {
     <title>Add Table</title>
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+<style>
+body {
+    background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url('img/restaurant-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+h1 {
+    color: white !important;
+    font-weight: bold;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+}
+
+label {
+    color: white !important;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+}
+
+.btn-success {
+    background-color: #c89b3c !important;
+    border-color: #c89b3c !important;
+}
+</style>
 </head>
 
 <body class="p-5">
